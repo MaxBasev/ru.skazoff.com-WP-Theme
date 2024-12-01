@@ -78,12 +78,6 @@ Create a child theme or use the WordPress Customizer to add custom CSS.
 
 ## Development
 
-### Build Process
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Run development server: `npm run dev`
-4. Build for production: `npm run build`
-
 ## Contributing
 
 1. Fork the repository
