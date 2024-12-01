@@ -17,6 +17,9 @@ function theme_scripts() {
     
     // Подключаем скрипт навигации
     wp_enqueue_script('navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true);
+    
+    // Добавляем новый скрипт
+    wp_enqueue_script('theme-toggle', get_template_directory_uri() . '/js/theme-toggle.js', array(), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_scripts');
 

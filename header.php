@@ -46,9 +46,6 @@
             'container' => false,
             'menu_class' => 'horizontal-menu'
         )); ?>
-        <button class="search-toggle desktop-search" aria-label="Toggle search">
-            <i class="fas fa-search"></i>
-        </button>
         
         <!-- Форма поиска для мобильного меню -->
         <form role="search" method="get" class="mobile-search-form" action="<?php echo home_url('/'); ?>">
@@ -57,5 +54,21 @@
                 <i class="fas fa-search"></i>
             </button>
         </form>
+
+        <!-- Кнопка смены темы только в мобильном меню -->
+        <button id="theme-toggle-mobile" class="theme-toggle theme-toggle-mobile" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <span>Сменить тему</span>
+        </button>
+
+        <!-- Добавляем кнопку поиска для десктопа -->
+        <button class="search-toggle desktop-search" aria-label="Search">
+            <i class="fas fa-search"></i>
+        </button>
     </nav>
+
+    <!-- Кнопка смены темы для десктопа -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
 </header>
