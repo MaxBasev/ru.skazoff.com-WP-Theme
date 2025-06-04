@@ -11,6 +11,9 @@
         <div class="container">
             <article class="single-post">
                 <h1 class="post-title"><?php the_title(); ?></h1>
+				<div class="post-date">
+                    <?php the_time('d.m.Y'); ?>
+                </div>
                 <div class="post-content">
                     <?php the_content(); ?>
                 </div>

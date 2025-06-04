@@ -1,6 +1,6 @@
 /*
-Theme Name: RU SkazOff Theme
-Theme URI: https://github.com/MaxBasev/ru.skazoff.com-WP-Theme
+Theme Name: EN SkazOff Theme
+Theme URI: https://github.com/MaxBasev/en.skazoff.com-WP-Theme
 Author: SkazOff
 Author URI: http://skazoff.com
 Description: Just one WordPress theme.
@@ -13,7 +13,7 @@ Tags: simple, minimal
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/* Создать CSS-переменные для повторяющихся значений */
+/* Create CSS variables for repeating values */
 :root {
     --primary-color: #7800ff;
     --primary-hover: #6600dd;
@@ -62,6 +62,7 @@ body {
     background: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
 }
 
 .container {
@@ -240,6 +241,8 @@ header hr {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px var(--shadow-color);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .single-post .post-title {
@@ -342,7 +345,7 @@ footer {
     font-size: 14px;
 }
 
-/* Специфичные стили для каждой иконки при наведении */
+/* Specific styles for each icon on hover */
 .social-icons a .fa-telegram:hover {
     color: #0088cc;
 }
@@ -367,7 +370,7 @@ footer {
     color: #1877F2;
 }
 
-/* Медиа-запрос для мобильных устройств */
+/* Media query for mobile devices */
 @media (max-width: 768px) {
     .social-icons {
         display: flex;
@@ -539,6 +542,8 @@ footer p {
     margin-bottom: 40px;
     height: 60vh;
     overflow: hidden;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 .post-thumbnail-full img {
@@ -574,7 +579,7 @@ footer p {
         display: none;
     }
 
-    /* Гамбургер меню */
+    /* Hamburger menu */
     .menu-toggle {
         width: 24px;
         height: 24px;
@@ -615,7 +620,7 @@ footer p {
         bottom: -8px;
     }
 
-    /* Стили для крестика при активном меню */
+    /* Styles for the cross in active menu */
     .menu-toggle.active {
         position: fixed;
         top: 15px;
@@ -642,7 +647,7 @@ footer p {
         transform: rotate(-45deg);
     }
 
-    /* Навигация */
+    /* Navigation */
     .main-navigation.active {
         display: flex;
         align-items: center;
@@ -676,7 +681,7 @@ footer p {
     color: var(--primary-hover);
 }
 
-/* Ссылки в контенте */
+/* Content links */
 .post-content a {
     color: var(--primary-color);
     text-decoration: none;
@@ -689,23 +694,26 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    /* ... существующие стили ... */
-
     /* Single Post Mobile Styles */
     .single-post {
         padding: 15px;
         margin: 0 -15px;
         border-radius: 0;
         box-shadow: none;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .container {
         padding: 0 15px;
+        overflow-x: hidden;
     }
 
     .post-content {
         font-size: 20px;
         line-height: 1.7;
+        width: 100%;
+        word-wrap: break-word;
     }
 
     .post-content h2 {
@@ -748,8 +756,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    /* ... существующие стили ... */
-
     .post-title {
         font-size: 28px;
         margin: 0 0 20px;
@@ -878,12 +884,12 @@ footer p {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-    /* Поиск */
+    /* Search */
     .search-toggle.desktop-search {
         display: none;
     }
 
-    /* Мобильное меню */
+    /* Mobile menu */
     .main-navigation.active {
         display: flex;
         flex-direction: column;
@@ -899,7 +905,7 @@ footer p {
         padding: 20px;
     }
 
-    /* Кнопка прокрутки вверх */
+    /* Scroll to top button */
     .scroll-to-top {
         bottom: 20px;
         right: 20px;
@@ -908,7 +914,7 @@ footer p {
         font-size: 16px;
     }
 
-    /* Переключатель темы */
+    /* Theme toggle */
     .theme-toggle {
         display: none !important;
     }
@@ -931,7 +937,7 @@ footer p {
 
 /* Mobile Search Form */
 .mobile-search-form {
-    display: none; /* По умолчанию скрыта */
+    display: none; /* Hidden by default */
     width: 100%;
     max-width: 300px;
     position: relative;
@@ -988,7 +994,7 @@ footer p {
     }
 
     .main-navigation.active .mobile-search-form {
-        display: block; /* Показываем форму поиска в активном мобильном меню */
+        display: block; /* Show search form in active mobile menu */
     }
 }
 
@@ -1038,18 +1044,18 @@ footer p {
     }
 }
 
-/* Добавить плавные переходы для всех интерактивных элементов */
+/* Add smooth transitions for all interactive elements */
 a, button {
     transition: all 0.3s ease;
 }
 
-/* Улучшить доступность фокуса */
+/* Improve focus accessibility */
 a:focus, button:focus {
     outline: none;
     text-decoration: underline;
 }
 
-/* Добавить индикатор загрузки */
+/* Add loading indicator */
 .loading {
     position: fixed;
     top: 0;
@@ -1060,24 +1066,24 @@ a:focus, button:focus {
     z-index: 9999;
 }
 
-/* Улучшить читаемость на мобильных устройствах */
+/* Improve readability on mobile devices */
 @media (max-width: 768px) {
     :root {
         --spacing-unit: 15px;
     }
 
     .post-content {
-        font-size: 18px; /* Уменьшить с 20px для лучшей читаемости */
+        font-size: 18px; /* Reduced from 20px for better readability */
         line-height: 1.6;
     }
 
-    /* Добавить отступы между элементами */
+    /* Add spacing between elements */
     .post-card {
         margin-bottom: var(--spacing-unit);
     }
 }
 
-/* Анимация для изображений */
+/* Animation for images */
 .post-thumbnail img {
     transition: transform 0.3s ease;
 }
@@ -1086,14 +1092,17 @@ a:focus, button:focus {
     transform: scale(1.05);
 }
 
-/* Добавим стили для фокуса для улучшения доступности */
+/* Add focus styles for better accessibility */
 a:focus, 
-button:focus {
-    outline: none;
-    text-decoration: underline;
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
-/* Стили для выделенного текста */
+/* Text selection styles */
 ::selection {
     background: var(--primary-color);
     color: var(--white);
@@ -1104,19 +1113,9 @@ button:focus {
     color: var(--white);
 }
 
-/* Responsive Video Container */
-.post-content iframe[src*="youtube.com"],
-.post-content iframe[src*="youtu.be"] {
-    width: 100%;
-    aspect-ratio: 16/9;
-    height: auto;
-    border: none;
-}
-
-/* Обертка для видео для поддержки старых браузеров */
+/* Video wrapper for better browser support */
 .wp-block-embed__wrapper {
     position: relative;
-    width: 100%;
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
     overflow: hidden;
@@ -1131,12 +1130,12 @@ button:focus {
     height: 100%;
 }
 
-/* Отступы для видео */
+/* Video spacing */
 .wp-block-embed {
     margin: var(--spacing-unit) 0;
 }
 
-/* Медиа запрос для мобильных устройств */
+/* Media query for mobile devices */
 @media (max-width: 768px) {
     .wp-block-embed {
         margin: calc(var(--spacing-unit) / 2) 0;
@@ -1283,7 +1282,7 @@ button:focus {
     }
 }
 
-/* Анимации для карточек постов */
+/* Animations for post cards */
 .post-card {
     background: var(--card-background);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -1296,7 +1295,7 @@ button:focus {
     box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-/* Анимации для ссылок */
+/* Animations for links */
 a {
     transition: color 0.2s ease, opacity 0.2s ease;
 }
@@ -1305,7 +1304,7 @@ a:hover {
     opacity: 0.8;
 }
 
-/* Анимации для кнопок */
+/* Animations for buttons */
 button,
 .button {
     transition: background-color 0.2s ease, 
@@ -1324,7 +1323,7 @@ button:active,
     transform: translateY(0);
 }
 
-/* Анимация для меню */
+/* Animations for menu */
 .main-navigation {
     transition: background-color 0.3s ease;
     background-color: var(--header-background);
@@ -1350,12 +1349,12 @@ button:active,
     width: 100%;
 }
 
-/* Анимация для поиска */
+/* Animations for search */
 .search-overlay {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Анимация для scroll-to-top */
+/* Animations for scroll-to-top */
 #scroll-to-top {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -1364,7 +1363,7 @@ button:active,
     transform: translateY(-3px);
 }
 
-/* Стили для переключателя темы */
+/* Styles for theme toggle */
 .theme-toggle {
     position: fixed;
     right: 20px;
@@ -1393,12 +1392,12 @@ button:active,
     box-shadow: 0 2px 8px var(--shadow-color);
 }
 
-/* Стили для мобильной кнопки */
+/* Styles for mobile button */
 .theme-toggle-mobile {
     display: none !important;
 }
 
-/* Медиа-запрос для мобильных устройств */
+/* Media-query for mobile devices */
 @media (max-width: 768px) {
     .theme-toggle {
         display: none !important;
@@ -1420,62 +1419,41 @@ button:active,
     }
 }
 
-/* Стили для изображений в постах */
+/* Styles for images in posts */
 .post-content img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-/* Стили для встроенного контента */
+/* Styles for embedded content */
 .post-content iframe,
 .post-content embed,
 .post-content object {
     max-width: 100%;
+    display: block;
 }
 
-/* Стили для pre и code блоков */
+/* Styles for pre and code blocks */
 .post-content pre,
 .post-content code {
     max-width: 100%;
     overflow-x: auto;
     white-space: pre-wrap;
     word-wrap: break-word;
+    display: block;
 }
 
-/* Стили для таблиц */
+/* Styles for tables */
 .post-content table {
     max-width: 100%;
     display: block;
     overflow-x: auto;
+    border-collapse: collapse;
+    width: auto;
 }
 
-/* Убираем стандартную обводку и добавляем подчеркивание */
-a:focus,
-button:focus {
-    outline: none;
-    text-decoration: underline;
-}
-
-/* Для кнопок добавим специальные стили при фокусе */
-.theme-toggle:focus,
-.menu-toggle:focus,
-.search-toggle:focus,
-.search-submit:focus,
-.search-close:focus,
-.mobile-search-submit:focus {
-    outline: none;
-    text-decoration: none; /* Убираем подчеркивание для кнопок */
-    border-bottom: 2px solid var(--primary-color);
-}
-
-/* Для ссылок в меню */
-.horizontal-menu a:focus {
-    outline: none;
-    text-decoration: underline;
-    text-underline-offset: 4px; /* Отступ подчеркивания от текста */
-}
-
-/* Улучшенная типографика */
+/* Improved typography */
 .post-content {
     font-size: 18px;
     line-height: 1.8;
@@ -1491,11 +1469,52 @@ button:focus {
     margin-bottom: 1em;
 }
 
-/* Стили для первой буквы первого параграфа */
+/* Styles for first letter of first paragraph */
 .post-content > p:first-of-type::first-letter {
     font-size: 3.5em;
     float: left;
     line-height: 1;
     padding-right: 0.2em;
     color: var(--primary-color);
+}
+
+/* Post date */
+.post-date {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-family: var(--font-primary);
+    font-style: italic;
+}
+
+.single-post .post-date {
+    margin-top: -20px;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .post-date {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .single-post .post-date {
+        margin-top: -15px;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+}
+
+.site-content {
+    overflow-x: hidden;
+}
+
+/* Fix for code blocks on mobile */
+.post-content pre,
+.post-content code {
+    font-size: 14px; /* Smaller font on mobile */
+    padding: 10px;
+    margin: 0 -10px;
+    width: calc(100% + 20px);
+    box-sizing: border-box;
 }

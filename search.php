@@ -17,6 +17,9 @@
                         <h2 class="post-card-title">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         </h2>
+						<div class="post-date">
+                    <?php the_time('d.m.Y'); ?>
+                </div>
                         <div class="post-card-excerpt">
                             <?php the_excerpt(); ?>
                         </div>
