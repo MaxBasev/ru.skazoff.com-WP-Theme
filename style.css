@@ -10,8 +10,7 @@ License URI: https://opensource.org/license/mit
 Tags: simple, minimal
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Fonts are now loaded via functions.php for better performance */
 
 /* Create CSS variables for repeating values */
 :root {

@@ -4,7 +4,7 @@
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             <?php if (has_post_thumbnail()) : ?>
                 <div class="post-thumbnail-full">
-                    <?php the_post_thumbnail('full'); ?>
+                    <?php the_post_thumbnail('full', array('fetchpriority' => 'high', 'loading' => 'eager')); ?>
                 </div>
             <?php endif; ?>
             

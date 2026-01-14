@@ -3,7 +3,10 @@
 <main class="site-content">
     <div class="container main-container">
         <div class="posts-list">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); 
+            <?php 
+            $post_count = 0;
+            if (have_posts()) : while (have_posts()) : the_post(); 
+                $post_count++;
                 // Check if this is a sticky post
                 $is_sticky = is_sticky();
                 $post_class = $is_sticky ? 'post-card pinned-post' : 'post-card';
@@ -11,7 +14,17 @@
                 <article class="<?php echo $post_class; ?>">
                     <?php if (has_post_thumbnail()) : ?>
                         <a href="<?php the_permalink(); ?>" class="post-thumbnail">
-                            <?php the_post_thumbnail('large'); ?>
+                            <?php 
+                            $attr = array();
+                            if ($post_count === 1) {
+                                // Optimize LCP for the first post
+                                $attr['fetchpriority'] = 'high';
+                                $attr['loading'] = 'eager';
+                            } else {
+                                $attr['loading'] = 'lazy';
+                            }
+                            the_post_thumbnail('large', $attr); 
+                            ?>
                         </a>
                     <?php endif; ?>
                     

@@ -11,12 +11,16 @@ add_theme_support('html5', array('search-form'));
 
 // Include scripts and styles
 function skazoff_scripts() {
+    // Enqueue Google Fonts
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap', array(), null);
+
     // Enqueue styles
-    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
     wp_enqueue_style('skazoff-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css'));
     
     // Enqueue scripts
-    wp_enqueue_script('navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/navigation.js'), true);
+    // navigation.js does not depend on jQuery, removing dependency to allow async/defer
+    wp_enqueue_script('navigation', get_template_directory_uri() . '/js/navigation.js', array(), filemtime(get_stylesheet_directory() . '/js/navigation.js'), true);
     wp_enqueue_script('theme-toggle', get_template_directory_uri() . '/js/theme-toggle.js', array(), filemtime(get_stylesheet_directory() . '/js/theme-toggle.js'), true);
     
     // Enqueue TOC script only on single posts
@@ -25,6 +29,17 @@ function skazoff_scripts() {
     }
 }
 add_action('wp_enqueue_scripts', 'skazoff_scripts');
+
+// Add resource hints for performance
+function skazoff_resource_hints($urls, $relation_type) {
+    if ('preconnect' === $relation_type) {
+        $urls[] = 'https://fonts.googleapis.com';
+        $urls[] = 'https://fonts.gstatic.com';
+        $urls[] = 'https://cdnjs.cloudflare.com';
+    }
+    return $urls;
+}
+add_filter('wp_resource_hints', 'skazoff_resource_hints', 10, 2);
 
 // Add custom excerpt length
 function custom_excerpt_length($length) {
