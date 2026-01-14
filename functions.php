@@ -41,6 +41,18 @@ function skazoff_resource_hints($urls, $relation_type) {
 }
 add_filter('wp_resource_hints', 'skazoff_resource_hints', 10, 2);
 
+// Async load CSS for performance
+function skazoff_async_styles($tag, $handle) {
+    // Add handles of styles to load asynchronously
+    $async_styles = array('google-fonts', 'font-awesome');
+
+    if (in_array($handle, $async_styles)) {
+        return str_replace("media='all'", "media='print' onload=\"this.media='all'\"", $tag) . "<noscript>" . str_replace("media='print' onload=\"this.media='all'\"", "media='all'", $tag) . "</noscript>";
+    }
+    return $tag;
+}
+add_filter('style_loader_tag', 'skazoff_async_styles', 10, 2);
+
 // Add custom excerpt length
 function custom_excerpt_length($length) {
     return 30;
@@ -90,14 +102,7 @@ function add_open_graph_tags() {
 }
 add_action('wp_head', 'add_open_graph_tags');
 
-// Font loading optimization
-function optimize_font_loading() {
-    ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <?php
-}
-add_action('wp_head', 'optimize_font_loading', 1);
+// Font loading optimization removed in favor of wp_resource_hints filter above
 
 // Lazy loading for images
 function add_lazy_loading($content) {
