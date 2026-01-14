@@ -2174,11 +2174,15 @@ h3[id] {
     font-weight: 500;
     position: fixed;
     width: 100%;
+    box-sizing: border-box;
+    /* Fix width issues with padding */
     left: 0;
     top: 0;
     z-index: 9999;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     line-height: 1.4;
+    word-wrap: break-word;
+    /* Ensure URLs don't overflow */
 }
 
 .archive-notice-bar a {

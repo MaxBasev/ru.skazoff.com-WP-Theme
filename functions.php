@@ -16,7 +16,7 @@ function skazoff_scripts() {
 
     // Enqueue styles
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
-    wp_enqueue_style('skazoff-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css'));
+    // wp_enqueue_style('skazoff-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css'));
     
     // Enqueue scripts
     // navigation.js does not depend on jQuery, removing dependency to allow async/defer
@@ -101,6 +101,56 @@ function add_open_graph_tags() {
     }
 }
 add_action('wp_head', 'add_open_graph_tags');
+
+// Preload LCP image
+function skazoff_preload_lcp_image() {
+    $image_url = false;
+
+    if (is_front_page() || is_home()) {
+        // For homepage, get the first post's thumbnail
+        $query = new WP_Query(array(
+            'posts_per_page' => 1,
+            'post_status' => 'publish',
+            'ignore_sticky_posts' => false,
+            'no_found_rows' => true,
+            'update_post_meta_cache' => true,
+            'update_post_term_cache' => false,
+        ));
+
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                if (has_post_thumbnail()) {
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                }
+            }
+            wp_reset_postdata();
+        }
+    } elseif (is_single()) {
+        // For single post, use the featured image
+        if (has_post_thumbnail()) {
+            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+        }
+    }
+
+    if ($image_url) {
+        echo '<link rel="preload" as="image" href="' . esc_url($image_url) . '" fetchpriority="high">';
+    }
+}
+add_action('wp_head', 'skazoff_preload_lcp_image', 1);
+
+// Inline critical CSS
+function skazoff_inline_styles() {
+    $css_file = get_stylesheet_directory() . '/style.css';
+    if (file_exists($css_file)) {
+        $css = file_get_contents($css_file);
+        // Basic minification
+        $css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css); // Remove comments
+        $css = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $css); // Remove white space
+        echo '<style id="skazoff-inline-style">' . $css . '</style>';
+    }
+}
+add_action('wp_head', 'skazoff_inline_styles', 5);
 
 // Font loading optimization removed in favor of wp_resource_hints filter above
 
