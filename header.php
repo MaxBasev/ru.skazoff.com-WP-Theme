@@ -13,9 +13,22 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <div class="archive-notice-bar">
+    <div class="archive-notice-bar" id="archive-bar">
         Это архив старого блога на русском языке. Все новое можно читать вот тут: <a href="https://blog.maxbasev.com">blog.maxbasev.com</a>
     </div>
+    <script>
+        (function() {
+            var bar = document.getElementById('archive-bar');
+            var setPadding = function() {
+                document.body.style.paddingTop = bar.offsetHeight + 'px';
+            };
+            if (bar) {
+                setPadding();
+                window.addEventListener('resize', setPadding);
+                window.addEventListener('load', setPadding); // Recalculate after fonts load
+            }
+        })();
+    </script>
     <header class="<?php echo is_single() ? 'single-header' : 'main-header'; ?>">
     <div class="header-container">
         <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
