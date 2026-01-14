@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	const themeToggleMobile = document.getElementById('theme-toggle-mobile');
 	const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-	// Проверяем сохраненную тему или системные настройки
+	// Check saved theme or system preferences
 	const currentTheme = localStorage.getItem('theme') ||
 		(prefersDarkScheme.matches ? 'dark' : 'light');
 
-	// Устанавливаем начальную тему
+	// Set initial theme
 	document.documentElement.setAttribute('data-theme', currentTheme);
 	updateThemeIcons(currentTheme);
 
-	// Функция переключения темы
+	// Theme toggle function
 	function toggleTheme() {
 		const currentTheme = document.documentElement.getAttribute('data-theme');
 		const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		updateThemeIcons(newTheme);
 	}
 
-	// Обработчики клика для обеих кнопок
+	// Click handlers for both buttons
 	themeToggle?.addEventListener('click', toggleTheme);
 	themeToggleMobile?.addEventListener('click', toggleTheme);
 
-	// Обновление иконок
+	// Update icons
 	function updateThemeIcons(theme) {
 		const icons = document.querySelectorAll('.theme-toggle i, .theme-toggle-mobile i');
 		icons.forEach(icon => {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	// Следим за системными настройками
+	// Watch for system preferences changes
 	prefersDarkScheme.addListener((e) => {
 		if (!localStorage.getItem('theme')) {
 			const newTheme = e.matches ? 'dark' : 'light';

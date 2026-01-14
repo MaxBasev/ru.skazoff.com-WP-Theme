@@ -19,8 +19,8 @@
             <i class="fab fa-facebook"></i>
         </a>
     </div>
-    <p>&copy; <?php echo date('Y'); ?> SkazOff Theme. All rights reserved.</p>
-    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+    <p>&copy; <?php echo date('Y'); ?> SkazOff Theme. Все права защищены.</p>
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Наверх">
         <i class="fas fa-arrow-up"></i>
     </button>
 </footer>

@@ -1,4 +1,4 @@
-# SkazOff Theme
+# RU SkazOff Theme
 
 Hey there! 👋
 

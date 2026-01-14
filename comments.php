@@ -13,7 +13,7 @@ if (post_password_required()) {
                 echo '1 комментарий';
             } else {
                 printf(
-                    '%s комментариев',
+                    'Комментарии: %s',
                     number_format_i18n($comments_number)
                 );
             }
